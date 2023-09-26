@@ -1,0 +1,23 @@
+{
+  "name": "elysiajs-nuxt",
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "client:build": "bun --bun nuxt build",
+    "client:dev": "bun --bun nuxt dev",
+    "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare",
+    "server:dev": "bun --watch server/index.ts"
+  },
+  "dependencies": {
+    "elysia": "^0.7.24",
+    "elysiajs-nuxt": "link:elysiajs-nuxt"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.8.1",
+    "prettier-package-json": "^2.8.0",
+    "typescript": "^5.2.2",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
+  }
+}

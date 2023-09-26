@@ -1,0 +1,52 @@
+{
+  "name": "elysiajs-nuxt",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "CHANG, TZU-YEN <try_love_tom@alljoint.tw> (https://github.com/trylovetom)",
+  "homepage": "https://github.com/trylovetom/elysiajs-nuxt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trylovetom/elysiajs-nuxt.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./preset": "./src/preset/nitro.config.ts"
+  },
+  "module": "src/index.ts",
+  "scripts": {
+    "postinstall": "prettier-package-json --write package.json",
+    "tool:fmt": "prettier-package-json --write ./package.json && prettier '**/*' --write --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}' --fix",
+    "tool:lint": "prettier '**/*' --check --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}'"
+  },
+  "peerDependencies": {
+    "elysia": "^0.7.24",
+    "nuxt": "^3.8.1",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "bun-types": "latest",
+    "elysia": "^0.7.24",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nuxt": "^3.8.1",
+    "prettier": "^3.0.3",
+    "prettier-package-json": "^2.8.0",
+    "typescript": "^5.2.2"
+  },
+  "keywords": [
+    "bun",
+    "elysia",
+    "elysiajs",
+    "frontend",
+    "http",
+    "nuxt",
+    "nuxtjs",
+    "server",
+    "web"
+  ]
+}
