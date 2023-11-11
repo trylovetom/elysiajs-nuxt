@@ -8,6 +8,11 @@ export default new Elysia().all('*', async function nuxt({ request }) {
   if (process.env.NODE_ENV === 'production') {
     const outputPath = `${process.cwd()}/.output/server/index.mjs`
     const nitroApp: NitroApp = import.meta.require(outputPath)?.default
+
+    if (!nitroApp) {
+      throw new Error(`Can't find the nitroApp from "${outputPath}"`)
+    }
+
     const url = new URL(request.url)
 
     let body
@@ -33,7 +38,7 @@ export default new Elysia().all('*', async function nuxt({ request }) {
   const origin = nuxtConfig.vite?.server?.origin
 
   if (!origin) {
-    throw new Error(`Cannot find origin from "${nuxtConfigPath}"`)
+    throw new Error(`Can't find the origin from "${nuxtConfigPath}"`)
   }
 
   // forward the request
