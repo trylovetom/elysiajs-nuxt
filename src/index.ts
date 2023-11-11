@@ -10,7 +10,7 @@ const nuxtConfigPath = `${process.cwd()}/nuxt.config.ts`
 const nuxtConfig: NuxtConfig = import.meta.require(nuxtConfigPath)?.default
 const origin = nuxtConfig.vite?.server?.origin
 
-export default new Elysia().get('/*', async function nuxt({ request }) {
+export default new Elysia().all('*', async function nuxt({ request }) {
   if (isProduction) {
     const outputPath = `${process.cwd()}/.output/server/index.mjs`
     const nitroApp: NitroApp = import.meta.require(outputPath)?.default
