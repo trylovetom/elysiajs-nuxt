@@ -3,15 +3,9 @@ import { NitroApp } from 'nitropack'
 import { defineNuxtConfig } from 'nuxt/config'
 import { type NuxtConfig } from 'nuxt/schema'
 
-global.defineNuxtConfig = defineNuxtConfig
-
-const isProduction = process.env.NODE_ENV === 'production'
-const nuxtConfigPath = `${process.cwd()}/nuxt.config.ts`
-const nuxtConfig: NuxtConfig = import.meta.require(nuxtConfigPath)?.default
-const origin = nuxtConfig.vite?.server?.origin
-
 export default new Elysia().all('*', async function nuxt({ request }) {
-  if (isProduction) {
+  // isProduction
+  if (process.env.NODE_ENV === 'production') {
     const outputPath = `${process.cwd()}/.output/server/index.mjs`
     const nitroApp: NitroApp = import.meta.require(outputPath)?.default
     const url = new URL(request.url)
@@ -31,7 +25,12 @@ export default new Elysia().all('*', async function nuxt({ request }) {
     })
   }
 
-  // isDev
+  // isDevelopment
+  global.defineNuxtConfig = defineNuxtConfig
+
+  const nuxtConfigPath = `${process.cwd()}/nuxt.config.ts`
+  const nuxtConfig: NuxtConfig = import.meta.require(nuxtConfigPath)?.default
+  const origin = nuxtConfig.vite?.server?.origin
 
   if (!origin) {
     throw new Error(`Cannot find origin from "${nuxtConfigPath}"`)

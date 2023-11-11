@@ -20,7 +20,7 @@ bun add nuxt elysia --dev
 export default defineNuxtConfig({
   devtools: { enabled: true },
   // 必要設定！
-  nitro: { preset: require.resolve('elysiajs-nuxt/preset') },
+  nitro: { preset: import.meta.resolveSync('elysiajs-nuxt/preset') },
   // 必要設定！
   vite: { server: { origin: 'localhost:3000' } }
 })
