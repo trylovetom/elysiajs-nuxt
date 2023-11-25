@@ -3,9 +3,9 @@
   "type": "module",
   "module": "src/index.ts",
   "scripts": {
-    "client:build": "bun --bun nuxt build",
-    "client:dev": "bun --bun nuxt dev",
-    "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare",
+    "client:build": "bun --bun nuxt build src-client",
+    "client:dev": "bun --bun nuxt dev src-client",
+    "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare src-client",
     "server:dev": "bun --watch src-server/index.ts"
   },
   "dependencies": {

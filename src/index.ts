@@ -3,22 +3,30 @@ import { NitroApp } from 'nitropack'
 import { defineNuxtConfig } from 'nuxt/config'
 import { type NuxtConfig } from 'nuxt/schema'
 
-export default new Elysia().all('*', async function nuxt({ request }) {
+const nitroAppGlob = new Bun.Glob('**/.output/server/index.mjs')
+const nitroAppPath = nitroAppGlob
+  .scanSync({ absolute: true, dot: true })
+  .next().value
+
+const nuxtConfigGlob = new Bun.Glob('**/nuxt.config.ts')
+const nuxtConfigPath = nuxtConfigGlob.scanSync({ absolute: true }).next().value
+
+export default new Elysia().all('*', async function nuxt({ request, set }) {
   // isProduction
   if (process.env.NODE_ENV === 'production') {
-    const outputPath = `${process.cwd()}/.output/server/index.mjs`
-    const nitroApp: NitroApp = import.meta.require(outputPath)?.default
+    const nitroApp: NitroApp = import.meta.require(nitroAppPath)?.default
 
     if (!nitroApp) {
-      throw new Error(`Can't find the nitroApp from "${outputPath}"`)
+      throw new Error(`Can't find the nitroApp from "${nitroAppPath}"`)
     }
 
-    const url = new URL(request.url)
-
     let body
+
     if (request.body) {
       body = await request.arrayBuffer()
     }
+
+    const url = new URL(request.url)
 
     return nitroApp.localFetch(url.pathname + url.search, {
       host: url.hostname,
@@ -33,7 +41,6 @@ export default new Elysia().all('*', async function nuxt({ request }) {
   // isDevelopment
   global.defineNuxtConfig = defineNuxtConfig
 
-  const nuxtConfigPath = `${process.cwd()}/nuxt.config.ts`
   const nuxtConfig: NuxtConfig = import.meta.require(nuxtConfigPath)?.default
   const origin = nuxtConfig.vite?.server?.origin
 
@@ -45,13 +52,22 @@ export default new Elysia().all('*', async function nuxt({ request }) {
   const url = new URL(request.url)
   url.host = origin
 
+  if (url.pathname === '/@vite/client') {
+    url.pathname = '/_nuxt/@vite/client'
+  }
+
+  if (url.pathname.includes('/@vite/client')) {
+    set.redirect = url.toString()
+    return
+  }
+
   const req = new Request(url.toString(), request)
   req.headers.set('host', url.host)
   req.headers.set('origin', url.origin)
 
   const res = await fetch(req)
 
-  if (!res.headers.get('content-type')?.includes('text/html')) {
+  if (!res.ok || !res.headers.get('content-type')?.includes('text/html')) {
     return res
   }
 

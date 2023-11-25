@@ -17,30 +17,37 @@ bun add nuxt elysia --dev
 2. configure nuxt.config.ts
 
 ```ts
+// src-client/nuxt.config.ts
 export default defineNuxtConfig({
-  devtools: { enabled: true },
   // mandatory configuration!
   nitro: { preset: import.meta.resolveSync('elysiajs-nuxt/preset') },
   // mandatory configuration!
-  vite: { server: { origin: 'localhost:3000' } }
+  vite: { server: { origin: 'localhost:3000', cors: true } },
+  // mandatory configuration!
+  devServer: { host: 'localhost', port: 3000 }
 })
 ```
 
 3. use elysiajs-nuxt as a plugin
 
 ```ts
-// index.ts
+// src-server/index.ts
 import { Elysia } from 'elysia'
 import elysiaNuxt from 'elysiajs-nuxt'
 
 new Elysia().use(elysiaNuxt).listen(5566)
 ```
 
-4. start the servers, both nuxt and elysia
+4. simultaneously start dev servers, both client(nuxt) and server(elysia)
 
 ```sh
-bun --bun --watch index.ts
-bun --bun nuxt dev
+# server
+bun run --watch src-server
+```
+
+```sh
+# client
+bun --bun nuxt dev src-client/index.ts
 ```
 
 ### Production Environment
@@ -48,14 +55,14 @@ bun --bun nuxt dev
 1. compile the Client
 
 ```ts
-bun --bun nuxt build
+bun --bun nuxt build src-client
 ```
 
 2. start the Server
 
 ```sh
 # mandatory configuration!
-NODE_ENV=production bun --bun index.ts
+NODE_ENV=production bun run src-server/index.ts
 ```
 
 ### Example
