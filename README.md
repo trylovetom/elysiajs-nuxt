@@ -22,9 +22,7 @@ export default defineNuxtConfig({
   // mandatory configuration!
   nitro: { preset: import.meta.resolveSync('elysiajs-nuxt/preset') },
   // mandatory configuration!
-  vite: { server: { origin: 'localhost:3000', cors: true } },
-  // mandatory configuration!
-  devServer: { host: 'localhost', port: 3000 }
+  vite: { server: { origin: 'localhost:3000' } }
 })
 ```
 

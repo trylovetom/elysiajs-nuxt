@@ -6,7 +6,8 @@
     "client:build": "bun --bun nuxt build src-client",
     "client:dev": "bun --bun nuxt dev src-client",
     "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare src-client",
-    "server:dev": "bun --watch src-server/index.ts"
+    "server:dev": "bun --watch src-server/index.ts",
+    "server:start": "bun src-server/index.ts"
   },
   "dependencies": {
     "elysia": "^0.7.24",

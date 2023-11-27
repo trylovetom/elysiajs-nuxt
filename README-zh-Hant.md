@@ -17,8 +17,8 @@ bun add nuxt elysia --dev
 2. 設定 nuxt.config.ts
 
 ```ts
+// src-client/nuxt.config.ts
 export default defineNuxtConfig({
-  devtools: { enabled: true },
   // 必要設定！
   nitro: { preset: import.meta.resolveSync('elysiajs-nuxt/preset') },
   // 必要設定！
@@ -29,18 +29,23 @@ export default defineNuxtConfig({
 3. 使用 elysiajs-nuxt 為 plugin
 
 ```ts
-// index.ts
+// src-server/index.ts
 import { Elysia } from 'elysia'
 import elysiaNuxt from 'elysiajs-nuxt'
 
 new Elysia().use(elysiaNuxt).listen(5566)
 ```
 
-4. 啟動服務器，nuxt 與 elysia
+4. 同時啟動開發服務器，客戶端（nuxt） 與服務器（elysia）
 
 ```sh
-bun --bun --watch index.ts
-bun --bun nuxt dev
+# 服務器
+bun run --watch src-server
+```
+
+```sh
+# 客戶端
+bun --bun nuxt dev src-client/index.ts
 ```
 
 ### 產品環境
@@ -48,14 +53,14 @@ bun --bun nuxt dev
 1. 編譯客戶端
 
 ```ts
-bun --bun nuxt build
+bun --bun nuxt build src-client
 ```
 
 2. 啟動服務器
 
 ```sh
 # 環境變數為必要設定
-NODE_ENV=production bun --bun index.ts
+NODE_ENV=production bun run src-server/index.ts
 ```
 
 ### 範例參考
