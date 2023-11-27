@@ -2,6 +2,10 @@
 
 > 輕鬆的整合 elysia 與 nuxt，支援 @nuxt/devtools 歐！
 
+**Demo**
+
+https://github.com/nuxt/nuxt/assets/13268073/33e85108-df4d-4fab-a857-2619dfb9b5a4
+
 ## 使用
 
 ### 開發環境
@@ -69,9 +73,9 @@ NODE_ENV=production bun run src-server/index.ts
 
 ## 作者
 
-- [CHANG, TZU-YEN](https://github.com/trylovetom)
+- [張子晏](https://github.com/trylovetom)
 
 ## 語言
 
-- [English](/README.md)
-- [繁體中文](/README-zh-TW.md)
+- [English](./README.md)
+- [繁體中文](./README-zh-Hant.md)

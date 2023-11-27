@@ -2,6 +2,10 @@
 
 > Easily integrate elysia with nuxt, now supporting @nuxt/devtools!
 
+**Demo**
+
+https://github.com/nuxt/nuxt/assets/13268073/33e85108-df4d-4fab-a857-2619dfb9b5a4
+
 ## Usage
 
 ### Development Environment
@@ -73,5 +77,5 @@ NODE_ENV=production bun run src-server/index.ts
 
 ## Languages
 
-- [English](/README.md)
-- [繁體中文](/README-zh-TW.md)
+- [English](./README.md)
+- [繁體中文](./README-zh-Hant.md)

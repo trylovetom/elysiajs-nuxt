@@ -1,0 +1,38 @@
+name: Test
+
+on:
+  # push to main branch
+  push:
+    branches: [main]
+
+  # any pull request
+  pull_request:
+
+  # daily
+  schedule:
+    - cron: '00 16 * * *' # 00:00 in taipei (utc+8)
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [1.x.x, latest]
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Git Source
+        uses: actions/checkout@v4
+
+      - name: Use Bun ${{ matrix.node-version }}
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Lint Your Code
+        run: bun run tool:lint
