@@ -4,7 +4,7 @@
 
 **Demo**
 
-https://github.com/nuxt/nuxt/assets/13268073/33e85108-df4d-4fab-a857-2619dfb9b5a4
+https://github.com/nuxt/nuxt/assets/13268073/d5c96902-698f-482a-8360-9f657ab40eba
 
 ## Usage
 

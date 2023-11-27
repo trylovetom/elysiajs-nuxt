@@ -7,14 +7,14 @@
     "client:dev": "bun --bun nuxt dev src-client",
     "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare src-client",
     "server:dev": "bun --watch src-server/index.ts",
-    "server:start": "bun src-server/index.ts"
+    "server:start": "NODE_ENV=production bun src-server/index.ts"
   },
   "dependencies": {
     "elysia": "^0.7.24",
     "elysiajs-nuxt": "link:elysiajs-nuxt"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.0.3",
     "nuxt": "^3.8.1",
     "prettier-package-json": "^2.8.0",
     "typescript": "^5.2.2",
