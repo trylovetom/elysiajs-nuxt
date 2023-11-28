@@ -1,6 +1,6 @@
 # elysiajs-nuxt
 
-> Easily integrates elysia with nuxt, now supporting @nuxt/devtools!
+> Easily integrates elysia with nuxt, now supporting @nuxt/devtools and @elysiajs/eden!
 
 **Demo**
 

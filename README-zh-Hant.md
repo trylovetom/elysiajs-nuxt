@@ -1,6 +1,6 @@
 # elysiajs-nuxt
 
-> 輕鬆地整合 elysia 與 nuxt，支援 @nuxt/devtools 歐！
+> 輕鬆地整合 elysia 與 nuxt，支援 @nuxt/devtools 與 @elysiajs/eden 歐！
 
 **Demo**
 

@@ -1,20 +1,29 @@
 {
   "name": "elysiajs-nuxt",
   "type": "module",
-  "module": "src/index.ts",
+  "module": "src/server/index.ts",
   "scripts": {
     "client:build": "bun --bun nuxt build src-client",
     "client:dev": "bun --bun nuxt dev src-client",
     "postinstall": "prettier-package-json --write package.json && bun --bun nuxt prepare src-client",
     "server:dev": "bun --watch src-server/index.ts",
-    "server:start": "NODE_ENV=production bun src-server/index.ts"
+    "server:start": "NODE_ENV=production bun src-server/index.ts",
+    "tool:fmt": "prettier '**/*' --write --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}' --fix",
+    "tool:lint": "prettier '**/*' --check --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}'"
   },
   "dependencies": {
     "elysia": "^0.7.24",
     "elysiajs-nuxt": "link:elysiajs-nuxt"
   },
   "devDependencies": {
+    "@elysiajs/eden": "^0.7.4",
     "@nuxt/devtools": "^1.0.3",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "nuxt": "^3.8.1",
     "prettier-package-json": "^2.8.0",
     "typescript": "^5.2.2",

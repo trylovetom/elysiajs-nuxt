@@ -1,7 +1,7 @@
 import { Elysia } from 'elysia'
 import elysiaNuxt from 'elysiajs-nuxt'
 
-new Elysia()
+const application = new Elysia()
   .onStart(function onStart({ app }) {
     const startAt = new Date()
     console.info(
@@ -16,4 +16,7 @@ new Elysia()
     )
   })
   .use(elysiaNuxt)
+  .get('/api/ping', () => 'pong')
   .listen(5566)
+
+export type Application = typeof application
