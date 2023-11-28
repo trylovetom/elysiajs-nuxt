@@ -1,7 +1,7 @@
 {
   "name": "elysiajs-nuxt",
   "type": "module",
-  "module": "src/server/index.ts",
+  "module": "src-server/index.ts",
   "scripts": {
     "client:build": "bun --bun nuxt build src-client",
     "client:dev": "bun --bun nuxt dev src-client",

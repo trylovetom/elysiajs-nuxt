@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia'
-import { NitroApp } from 'nitropack'
+import { type NitroApp } from 'nitropack'
 import { defineNuxtConfig } from 'nuxt/config'
 import { type NuxtConfig } from 'nuxt/schema'
 
