@@ -16,7 +16,7 @@ const application = new Elysia()
     )
   })
   .use(elysiaNuxt)
-  .get('/api/ping', () => 'pong')
+  .get('/api/message', () => 'THIS IS THE WAY!')
   .listen(5566)
 
 export type Application = typeof application

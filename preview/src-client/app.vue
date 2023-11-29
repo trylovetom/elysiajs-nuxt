@@ -10,7 +10,7 @@
 
 const edenFetch = useEdenFetch()
 const { data } = await useAsyncData(() =>
-  edenFetch('/api/ping', { method: 'GET' })
+  edenFetch('/api/message', { method: 'GET' })
 )
 
 onMounted(() => alert(data.value))
