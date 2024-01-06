@@ -1,6 +1,6 @@
 {
   "name": "elysiajs-nuxt",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "license": "MIT",
   "author": "CHANG, TZU-YEN <try_love_tom@alljoint.tw> (https://github.com/trylovetom)",
   "homepage": "https://github.com/trylovetom/elysiajs-nuxt",
@@ -20,24 +20,24 @@
     "tool:lint": "prettier '**/*' --check --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}'"
   },
   "peerDependencies": {
-    "elysia": "^0.7.29",
-    "nuxt": "^3.8.2",
-    "typescript": "^5.3.2"
+    "elysia": "^0.8.8",
+    "nuxt": "^3.9.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
-    "bun-types": "^1.0.14",
-    "elysia": "^0.7.29",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "nitropack": "^2.8.0",
-    "nuxt": "^3.8.2",
-    "prettier": "^3.1.0",
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "elysia": "^0.8.8",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "nitropack": "^2.8.1",
+    "nuxt": "^3.9.1",
+    "prettier": "^3.1.1",
     "prettier-package-json": "^2.8.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "keywords": [
     "bun",
