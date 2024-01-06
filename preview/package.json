@@ -12,22 +12,20 @@
     "tool:lint": "prettier '**/*' --check --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}'"
   },
   "dependencies": {
-    "elysia": "^0.7.29",
+    "elysia": "^0.8.8",
     "elysiajs-nuxt": "link:elysiajs-nuxt"
   },
   "devDependencies": {
-    "@elysiajs/eden": "^0.7.4",
-    "@nuxt/devtools": "^1.0.4",
+    "@elysiajs/eden": "^0.8.0",
+    "@nuxt/devtools": "^1.0.6",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "nuxt": "^3.8.2",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "nuxt": "^3.9.1",
     "prettier-package-json": "^2.8.0",
-    "typescript": "^5.3.2",
-    "vue": "^3.3.9",
-    "vue-router": "^4.2.5"
+    "typescript": "^5.3.3"
   }
 }

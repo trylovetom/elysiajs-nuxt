@@ -1,16 +1,9 @@
 import { edenFetch } from '@elysiajs/eden'
 import { type Application } from '../../src-server'
 
-function pipeline<A extends unknown[], B, C>(
-  fn1: (...args: A) => B,
-  fn2: (b: B) => C
-): (...args: A) => C {
-  return (...args: A): C => fn2(fn1(...args))
-}
-
-async function handleEdenFetch<Data>(
+async function unwrapper<Data>(
   req: Promise<{ data: Data; error: unknown }>
-) {
+): Promise<Data> | never {
   const res = await req
 
   if (res.error) {
@@ -20,11 +13,19 @@ async function handleEdenFetch<Data>(
   return res.data
 }
 
+// eden fetch
+function pipeline<A extends unknown[], B, C>(
+  fn1: (...args: A) => B,
+  fn2: (b: B) => C
+): (...args: A) => C {
+  return (...args: A): C => fn2(fn1(...args))
+}
+
 export const useEdenFetch = () => {
   const config = useRuntimeConfig()
   const fetchTarget = process.server
     ? config.fetchTarget
     : config.public.fetchTarget
 
-  return pipeline(edenFetch<Application>(fetchTarget), handleEdenFetch)
+  return pipeline(edenFetch<Application>(fetchTarget), unwrapper)
 }

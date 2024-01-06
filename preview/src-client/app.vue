@@ -9,9 +9,7 @@
 /// <reference lib="dom.iterable" />
 
 const edenFetch = useEdenFetch()
-const { data } = await useAsyncData(() =>
-  edenFetch('/api/message', { method: 'GET' })
-)
+const { data } = await useAsyncData(() => edenFetch('/api/message', {}))
 
-onMounted(() => alert(data.value))
+onMounted(() => alert(data.value?.message))
 </script>

@@ -2,7 +2,7 @@ import { Elysia } from 'elysia'
 import elysiaNuxt from 'elysiajs-nuxt'
 
 const application = new Elysia()
-  .onStart(function onStart({ app }) {
+  .onStart(function onStart(app) {
     const startAt = new Date()
     console.info(
       `[${import.meta.file}]: server started at ${startAt.toISOString()} (${app
@@ -16,7 +16,7 @@ const application = new Elysia()
     )
   })
   .use(elysiaNuxt)
-  .get('/api/message', () => 'THIS IS THE WAY!')
+  .get('/api/message', () => ({ message: 'THIS IS THE WAY!' }))
   .listen(5566)
 
 export type Application = typeof application
