@@ -1,19 +1,17 @@
 import { Elysia } from 'elysia'
 import elysiaNuxt from 'elysiajs-nuxt'
 
+const detail = `[${import.meta.file}]:`
 const application = new Elysia()
-  .onStart(function onStart(app) {
+  .onStart(function onStart({ server }) {
     const startAt = new Date()
     console.info(
-      `[${import.meta.file}]: server started at ${startAt.toISOString()} (${app
-        .server?.hostname}:${app.server?.port}).`
+      `${detail} server started at ${startAt.toISOString()} (${server?.url}).`
     )
   })
   .onStop(function onStop() {
     const startAt = new Date()
-    console.info(
-      `[${import.meta.file}]: server stop at ${startAt.toISOString()}.`
-    )
+    console.info(`${detail} server stop at ${startAt.toISOString()}.`)
   })
   .use(elysiaNuxt)
   .get('/api/message', () => ({ message: 'THIS IS THE WAY!' }))
