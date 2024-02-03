@@ -6,7 +6,5 @@ export default <NitroPreset>{
   entry: fileURLToPath(new URL('./entry.ts', import.meta.url)),
   // https://bun.sh/docs/runtime/modules#resolution
   exportConditions: ['bun', 'worker', 'node', 'import', 'default'],
-  commands: {
-    preview: 'bun run ./server/index.mjs'
-  }
+  commands: { deploy: 'NODE_ENV=production bun run src-server/index.ts' }
 }
